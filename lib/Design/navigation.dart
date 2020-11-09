@@ -54,67 +54,84 @@ var data = [
     "id": 1,
     "title": "Flutter",
     "subtitle": "Flutter for mobile app development",
-    "descritpion": "For ison samndnd nfnnfnfmfmmfmfm"
+    "description": "For ison samndnd nfnnfnfmfmmfmfm"
   },
   {
     "id": 2,
     "title": "testing",
     "subtitle": "Flutter for mobile app development",
-    "descritpion":
-        "You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the "
-            ".ajax() function in the code snippet below to get started."
+    "description":"You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the "
+        ".ajax() function in the code snippet below to get started."
   },
   {
     "id": 3,
     "title": "c++",
     "subtitle": "Flutter for mobile app development",
-    "descritpion":
-        "You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the .ajax() function in the code snippet below to get started."
+    "description": "You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the .ajax() function in the code snippet below to get started."
   },
   {
     "id": 4,
     "title": "mern",
     "subtitle": "Flutter for mobile app development",
-    "descritpion":
-        "You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the .ajax() function in the code snippet below to get started."
+    "description": "You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the .ajax() function in the code snippet below to get started."
   },
   {
     "id": 5,
     "title": "php",
     "subtitle": "Flutter for mobile app development",
-    "descritpion":
-        "You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the ajax() function in the code snippet below to get started."
+    "description": "You can use AJAX to call the Random User Generator API and will receive a randomly generated user in return. If you are using jQuery, you can use the ajax() function in the code snippet below to get started."
   },
 ];
 
 class _HomeState extends State<Home> {
   List<Post> posts = [];
   TextEditingController _name;
+
   @override
   void initState() {
     super.initState();
     loadData(data);
   }
+
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _name.dispose();
-
   }
 
   @override
   Widget build(BuildContext context) {
-
-
+    print(posts);
     return ListView.separated(
-
-      itemBuilder: (_,int index){
+      itemBuilder: (_, int index) {
         Post post = posts[index];
+
         return ListTile(
-          // title: Text(post.title),
+
+          title: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(post.title),
+              Text(post.subtitle)
+
+            ],
+          ),
+          subtitle: Text(post.description),
+
+          leading: CircleAvatar(
+
+            child: Text(post.id.toString()),
+          ),
 
         );
+
       },
+      separatorBuilder: (_, int index) =>
+          Divider(
+            height: 3,
+            color: Colors.red,
+          ),
+      itemCount: posts.length,
     );
   }
 
@@ -127,6 +144,9 @@ class _HomeState extends State<Home> {
           description: item['description'],
           subtitle: item['subtitle']);
       allPosts.add(post);
+    });
+    setState(() {
+      posts = allPosts;
     });
   }
 }
