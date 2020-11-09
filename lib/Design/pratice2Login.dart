@@ -224,11 +224,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     InkWell(
                       onTap: (){
-                        Navigator.pushNamed(context, Routes.homepage);
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                            SignUpP(),
-                        ),
-                        );
+                        Navigator.pushNamed(context, Routes.signUp);
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                        //     SignUpP(),
+                        // ),
+
                       },
                       child: Text("Sign Up",
                       style: TextStyle(
@@ -268,7 +268,7 @@ class CustomButton extends StatelessWidget {
         padding: EdgeInsets.all(10.0),
         child: InkWell(
         onTap: (){
-          Navigator.pushNamed(context, Routes.homepage);
+          Navigator.pushNamed(context, Routes.signUp);
         },
           child: Container(
             height: 50,

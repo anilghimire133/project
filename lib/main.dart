@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project1/Design/navigation.dart';
 import 'package:project1/Design/homepage.dart';
+import 'package:project1/Design/pratice3SignUp.dart';
+import 'package:project1/Design/routingclasstwelve.dart';
 void main() {
   runApp(MyApp());
 }
@@ -12,10 +14,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Railway'
       ),
-      routes: {
-      '/': (context) => Navigator_Test(),
-    },
-      // initialRoute: Routes.navigator,
+      routes: Routes.getRoutes(),
+      initialRoute:'/'
 
     );
   }
